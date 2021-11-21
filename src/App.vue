@@ -1,12 +1,27 @@
-<template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
-  </div>
+<template lang="pug">
+  #app
+    load-layout(v-if="isLoading")
+      base-loading
+    main-layout(v-else)
 </template>
+
+<script>
+import { mapState } from 'vuex'
+
+export default {
+  name: 'App',
+  components: {
+    MainLayout: () => import('@/layouts/MainLayout.vue'),
+    LoadLayout: () => import('@/layouts/LoadLayout.vue'),
+    BaseLoading: () => import('@/components/BaseLoading.vue')
+  },
+  computed: {
+    ...mapState('loading', {
+      isLoading: 'isLoading'
+    })
+  }
+}
+</script>
 
 <style lang="stylus">
 #app
