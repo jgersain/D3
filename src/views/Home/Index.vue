@@ -1,6 +1,6 @@
 <template lang="pug">
   .home
-    h1
+    h1.font-diablo
       | Home
 </template>
 
